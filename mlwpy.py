@@ -115,8 +115,8 @@ def plot_separator(model, xs, ys, label='', ax=None):
 
 def high_school_style(ax):
     ' helper to define an axis to look like a typical school plot '
-    ax.spines['left'].set_position(('data, 0.0'))
-    ax.spines['bottom'].set_position(('data, 0.0'))
+    ax.spines['left'].set_position(('data', 0.0))
+    ax.spines['bottom'].set_position(('data', 0.0))
     ax.spines['right'].set_visible(False)
     ax.spines['top'].set_visible(False)
 
