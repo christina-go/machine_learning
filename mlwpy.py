@@ -79,7 +79,7 @@ def plot_boundary(ax, data, tgt, model, dims, grid_step=0.1):
     max_x1, max_x2 = np.max(twoD, axis=0) - grid_step
 
     # make a grid of points and predict at them
-    xs, ys = np.mgrid[mix_x1:max_x1:grid_step, min_x2:max_x2:grid_step]
+    xs, ys = np.mgrid[min_x1:max_x1:grid_step, min_x2:max_x2:grid_step]
 
     grid_points = np.c_[xs.ravel(), ys.ravel()]
     # warning: non-cv fit
@@ -101,11 +101,8 @@ def plot_separator(model, xs, ys, label='', ax=None):
         z_shape = (xs.size, ys.size)  # using .size since 1D
         zs = model.decision_function(xy).reshape(z_shape)
 
-        contours = ax.contour(xs,
-                              ys,
-                              zs,
-                              colors='k',
-                              levels=[0],
+        contours = ax.contour(xs, ys, zs,
+                              colors='k', levels=[0],
                               linestyles=['-'])
 
         fmt = {contours.levels[0]: label}
