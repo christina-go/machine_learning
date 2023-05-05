@@ -223,11 +223,15 @@ def sane_quiver(vs, ax=None, colors=None, origin=(0, 0)):
     # zs = np.broadcast_to(origin, vs.shape)
     orig_x, orig_y = origin
 
-    xs = vs.T[0]  # column to rows, row[0] is xs
-    ys = vs.T[1]
+    U = vs.T[0]  # column to rows, row[0] is xs
+    V = vs.T[1]
+    
+    #making everything the same length for the quiver
+    X = [orig_x for x in range(len(U))]
+    Y = [orig_y for x in range(len(V))]
 
     props = {"angles": 'xy', 'scale': 1, 'scale_units': 'xy'}
-    ax.quiver(orig_x, orig_y, xs, ys, color=colors, **props)
+    ax.quiver(X, Y, U, V, color='r', **props)
 
     ax.set_aspect('equal')
     # ax.set_axis_off()
